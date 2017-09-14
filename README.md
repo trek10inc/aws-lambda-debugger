@@ -1,5 +1,7 @@
 # AWS Lambda Debugger
 
+![image](https://user-images.githubusercontent.com/1966409/30458183-6e14b2d4-9978-11e7-8808-7e4950509823.png)
+
 Do you want to step through code running live in Lambda? Do you want to fix bugs faster?
 Do you want free pizza?
 
