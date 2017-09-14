@@ -1,0 +1,31 @@
+{
+  "name": "aws-lambda-debugger",
+  "version": "1.0.0",
+  "description": "AWS Lambda debugger",
+  "main": "proxy/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix --ext .js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@code.trek10.com:dev-help/research/lambda-portal-gun.git"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "debugger",
+    "debug",
+    "serverless"
+  ],
+  "author": "Rob Ribeiro <azurelogic@gmail.com> (https://azurelogic.com)",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
