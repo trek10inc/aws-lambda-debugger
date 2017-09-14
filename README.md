@@ -62,10 +62,11 @@ sudo service docker start
 # Run the Broker
 docker run --name debug-broker \
     -d -p 8080:8080 -p 9229:9229 \
-    trek10/aws-lambda-debugger-broker --restart always
+    --restart always \
+    trek10/aws-lambda-debugger
 
 # To view logs
-docker logs debug-broker
+docker logs -f debug-broker
 ```
 
 ### Add the proxy to your code
