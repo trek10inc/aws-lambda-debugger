@@ -49,10 +49,14 @@ Good. There are 5 steps:
 
 ### Deploy the broker server
 
+You should only need one of these for you or your team to start. The broker has
+been designed for multiple simultaneous sessions. We found a t2.small to be more
+than enough for starting out.
+
 - Kick off an EC2 Amazon Linux Instance
 - Attach Security Group
-    - exposing ports `8080` and `9229` to `0.0.0.0/0`
-    - expose port 22 to [YOUR IP](https://www.google.com/search?q=whats+my+ip)
+  - exposing ports `8080` and `9229` to `0.0.0.0/0`
+  - expose port 22 to [YOUR IP](https://www.google.com/search?q=whats+my+ip)
 - SSH in to the box
 
 ```bash
@@ -70,6 +74,15 @@ docker run --name debug-broker \
 # To view logs
 docker logs -f debug-broker
 ```
+
+#### Advanced networking configuration info
+
+Here's extra details about the port configurations:
+
+- Lambda connects to `8080`. If your Lambdas are in the same VPC,
+you can configure the security group to just allow them in this side.
+- The default port for the V8 Inspector is `9229`. You can restrict access
+to this port based on where your developers are coming from.
 
 ### Add the proxy to your code
 
@@ -104,8 +117,7 @@ debugger to the appropriate function. It is used as part of the URL to connect.
 
 ### Increase your Lambda timeout
 
-This is pretty straight forward. Alter the timeout to 300 seconds to allow
-maximum debug time.
+Alter the timeout to 300 seconds to allow maximum debug time.
 
 ### Use it!
 
