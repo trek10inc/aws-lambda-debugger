@@ -10,6 +10,11 @@ let child;
 let childSocket;
 let brokerSocket;
 
+function currentTimeInMillis () {
+  const hrtime = process.hrtime()
+  return hrtime[0] * 1000 + Math.floor(hrtime[1] / 1000000)
+}
+
 function runAsProxy() {
   if (!process.env.DEBUGGER_ACTIVE || process.env.DEBUGGER_ACTIVE === 'false') return;
   let childResolver;
@@ -101,7 +106,7 @@ function runAsProxy() {
             });
             childSocket.on('open', () => {
               child.send(JSON.stringify({
-                timestamp: Date.now() * 1000,
+                timestamp: currentTimeInMillis(),
                 remainingTime: context.getRemainingTimeInMillis(),
                 type: types.INVOKE_HANDLER,
                 event,
@@ -155,7 +160,7 @@ function runAsChild() {
           }
         });
         message.context.getRemainingTimeInMillis =
-          () => message.remainingTime - (Date.now() - message.timestamp);
+          () => message.remainingTime - (currentTimeInMillis() - message.timestamp);
         message.context.done = (err, response) =>
           process.send(JSON.stringify({
             type: types.LAMBDA_CALLBACK,
