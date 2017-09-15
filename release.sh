@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 npm config set sign-git-tag true
 npm version $1
 VERSION_TAG=`node -p "require('./package.json').version"`
