@@ -127,7 +127,9 @@ Alter the timeout to 300 seconds to allow maximum debug time.
 1. Launch your Lambda function (from console, via CLI, etc)
 2. Replace the `DEBUGGER_BROKER_ADDRESS` and `DEBUGGER_FUNCTION_ID` in the following URL
 and paste it into Chrome.
+
 ```chrome-devtools://devtools/remote/serve_file/@60cd6e859b9f557d2312f5bf532f6aec5f284980/inspector.html?experiments=true&v8only=true&ws=[DEBUGGER_BROKER_ADDRESS]:9229/[DEBUGGER_FUNCTION_ID]```
+
 3. DEBUG!!!
 
 **Bonus!** Use this bookmarklet to pull the URL from the Code tab for the function in the AWS console:
