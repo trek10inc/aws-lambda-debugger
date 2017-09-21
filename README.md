@@ -112,8 +112,10 @@ There are 3 magic environment variables that need to be set:
 - `DEBUGGER_ACTIVE`: As long as this value is present and it is not 'false'
 or empty string, the proxy will do its job.
 - `DEBUGGER_BROKER_ADDRESS`: This is the IP address or domain for the broker server.
-- `DEBUGGER_FUNCTION_ID`: This is a unique ID (per function!) that is used to route the
-debugger to the appropriate function. It is used as part of the URL to connect.
+- `DEBUGGER_FUNCTION_ID`: This is a unique ID of your own choosing (per function!)
+that is used by the broker to pair the debugger connection (this function ID is also
+part of the URL that the debugger connects to - see below) to the appropriate Lambda
+function.
 
 ### Increase your Lambda timeout
 
