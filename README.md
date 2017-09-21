@@ -115,7 +115,8 @@ or empty string, the proxy will do its job.
 - `DEBUGGER_FUNCTION_ID`: This is a unique ID of your own choosing (per function!)
 that is used by the broker to pair the debugger connection (this function ID is also
 part of the URL that the debugger connects to - see below) to the appropriate Lambda
-function.
+function. It does not need to be a UUID/GUID/etc. It just needs to be unique relative
+to any other functions that you or your teammates are using on the same broker instance.
 
 ### Increase your Lambda timeout
 
