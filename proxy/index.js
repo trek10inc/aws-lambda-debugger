@@ -4,7 +4,8 @@ const WebSocket = require('ws');
 const http = require('http');
 const types = require('../lib/messageTypes');
 
-const HANDLER_NAME = process.env._HANDLER.split('.')[1];// eslint-disable-line
+const handlerEnv = process.env._HANDLER && process.env._HANDLER.indexOf('.') > -1 ? process.env._HANDLER.split('.') : [null, 'defaultHandler']; // eslint-disable-line
+const HANDLER_NAME = handlerEnv[1];// eslint-disable-line
 
 let child;
 let childSocket;
@@ -24,7 +25,7 @@ function runAsProxy() {
   // only fork one child
   if (!child) {
     child = cp.fork(module.parent.filename, [], {
-      cwd: process.cwd,
+      cwd: process.cwd(),
       env: process.env,
       execPath: process.execPath,
       execArgv: process.execArgv.concat(['--inspect']),
