@@ -8,7 +8,7 @@ Do you want free pizza?
 This project will help you with the first 2 questions. When you show it to a friend,
 you might get that 3rd one too :)
 
-*This is only for the AWS Node 6.10 runtime*
+*This is only for the AWS Node runtime. Node 4.3 is not supported.*
 
 ## Isn't this impossible?
 
@@ -19,7 +19,7 @@ No. Well, not anymore.
 Normally, debugging is a one hop process: developer's debugger connect directly to the process. This *is* impossible with Lambda.
 
 However, we fork your code to a separate child process that is
-running in debug mode and connected to the original via AN interprocess communication
+running in debug mode and connected to the original via an interprocess communication
 channel. The parent process opens 2 WebSockets as well: one to the child process'
 V8 Inspector and the other to a broker server, becoming a proxy between the 2
 connections. Next, the developer connects a debugger to the broker server, which
@@ -105,6 +105,8 @@ require('aws-lambda-debugger');
 
 That's it!!!
 
+*How the magic works:* By putting the `require` call at the end of the module, it is the last thing to be evaluated before the module is loaded by Lambda. For whatever reason, Node provides access to the parent module and does not or can not stop us from mutating that parent module. This allows us to reach up into the parent and swap the handler before it is executed. The proxy code takes over and launches your handler in the child process instead.
+
 ### Configure the proxy via environment variables
 
 There are 3 magic environment variables that need to be set:
@@ -112,7 +114,7 @@ There are 3 magic environment variables that need to be set:
 - `DEBUGGER_ACTIVE`: As long as this value is present and it is not 'false'
 or empty string, the proxy will do its job.
 - `DEBUGGER_BROKER_ADDRESS`: This is the IP address or domain for the broker server.
-- `DEBUGGER_FUNCTION_ID`: This is a unique ID of your own choosing (per function!)
+- `DEBUGGER_FUNCTION_ID`: This is a unique "ID" of your own choosing (per function!)
 that is used by the broker to pair the debugger connection (this function ID is also
 part of the URL that the debugger connects to - see below) to the appropriate Lambda
 function. It does not need to be a UUID/GUID/etc. It just needs to be unique relative
@@ -184,7 +186,7 @@ are cleaned up as fast as possible. If you find any leaks, please let us know.
   - Get direct link as soon as Lambda connects to broker
   - Track remaining time
 
-**Made with :gift_heart: and :sparkles:magic:sparkles: by [Rob Ribeiro](https://github.com/azurelogic) + [Trek10](https://www.trek10.com/)**
+**Made with :gift_heart: and a pinch of black magic: by [Rob Ribeiro](https://github.com/azurelogic) + [Trek10](https://www.trek10.com/)**
 
 P.S.: We do AWS consulting and monitoring. Come talk to us.
 
