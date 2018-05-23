@@ -1,6 +1,6 @@
 {
   "name": "aws-lambda-debugger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "AWS Lambda debugger",
   "main": "proxy/index.js",
   "scripts": {
