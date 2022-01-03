@@ -186,8 +186,8 @@ are cleaned up as fast as possible. If you find any leaks, please let us know.
   - Get direct link as soon as Lambda connects to broker
   - Track remaining time
 
-**Made with :gift_heart: and a pinch of black magic: by [Rob Ribeiro](https://github.com/azurelogic) + [Trek10](https://www.trek10.com/)**
+**Made with :gift_heart: and a pinch of black magic: by [Jessica Ribeiro](https://github.com/azurelogic) + [Trek10](https://www.trek10.com/)**
 
 P.S.: We do AWS consulting and monitoring. Come talk to us.
 
-Twitter: [Rob](https://twitter.com/azurelogic) + [Trek10](https://twitter.com/trek10inc)
+Twitter: [Jessica](https://twitter.com/azurelogic) + [Trek10](https://twitter.com/trek10inc)
